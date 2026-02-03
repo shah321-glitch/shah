@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Special Questions ❤️</title>
+
+<style>
+body{
+    font-family: Arial;
+    background: linear-gradient(to right, #ff9a9e, #fad0c4);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    margin:0;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    width:360px;
+    border-radius:15px;
+    box-shadow:0 0 20px rgba(0,0,0,0.2);
+    text-align:center;
+    position:relative;
+}
+
+button{
+    padding:10px 20px;
+    margin:10px;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.yes{
+    background:#4CAF50;
+    color:white;
+}
+
+.no{
+    background:#ff4d4d;
+    color:white;
+    position:absolute;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h2 id="question"></h2>
+
+<button class="yes" onclick="yesAnswer()">Yes ❤️</button>
+<button class="no" id="noBtn" onmouseover="moveNo()">No 😅</button>
+
+</div>
+
+<script>
+
+let questions = [
+"Kya tum mere saath baat karte waqt smile karte ho? 😊",
+"Kya tumhe mere messages ka wait rehta hai? 📱",
+"Kya tum mere saath outing ya date par jana pasand karoge? 🌹",
+"Kya tum mujhe apni life me special jagah dena chahoge? 💫",
+"Kya tum hamara relation long term banana chahoge? ❤️"
+];
+
+let current = 0;
+let moveCount = 0;
+
+let questionText = document.getElementById("question");
+questionText.innerHTML = questions[current];
+
+function yesAnswer(){
+
+    current++;
+    moveCount = 0;
+
+    if(current < questions.length){
+        questionText.innerHTML = questions[current];
+
+        // Reset No button position
+        let noBtn = document.getElementById("noBtn");
+        noBtn.style.left = "50%";
+        noBtn.style.top = "70%";
+        noBtn.style.display = "inline-block";
+    }
+    else{
+        document.querySelector(".card").innerHTML =
+        "<h2>Yay ❤️ Tum bahut special ho 😍</h2>";
+    }
+}
+
+function moveNo(){
+
+    let noBtn = document.getElementById("noBtn");
+
+    if(moveCount < 4){
+
+        let x = Math.random() * 300;
+        let y = Math.random() * 200;
+
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+
+        moveCount++;
+    }
+    else{
+        noBtn.style.display = "none";
+    }
+}
+
+</script>
+
+</body>
+</html>
